@@ -100,6 +100,8 @@ MonoBehaviour:
   isRunning: 0
   jumpSpeed: 10
   gravity: 25
+  MovementLocked: 0
+  CameraLocked: 0
   cameraTransform: {fileID: 7515869946549786169}
   mouseSensitivity: 2
   groundCheck: {fileID: 1116386936181705721}
@@ -127,13 +129,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.75
-  m_Radius: 0.3
+  m_Height: 1
+  m_Radius: 0.25
   m_SlopeLimit: 60
-  m_StepOffset: 1
+  m_StepOffset: 0.25
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.875, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!136 &2113374929226176845
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +155,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.875, z: 0}
@@ -185,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 2294522373902144388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,7 +211,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -222,15 +224,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.25
+  near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -486,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4732165671218428268, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4432160942066641566, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -718,6 +724,10 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.1737019
       objectReference: {fileID: 0}
+    - target: {fileID: 2953604236389334553, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3006928552751935236, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -930,6 +940,10 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.07535643
       objectReference: {fileID: 0}
+    - target: {fileID: 7140606858727328969, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7145515671107294405, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -960,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020272935348328761, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8020272935348328761, guid: c8c3ea7f89b47014ebb8cc7eef801b42, type: 3}
       propertyPath: m_IsActive

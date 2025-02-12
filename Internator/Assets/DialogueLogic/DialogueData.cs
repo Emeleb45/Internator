@@ -4,21 +4,21 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueContainer
 {
-    public List<DialogueNode> Lines; // Matches JSON key "Lines"
+    public List<DialogueNode> Lines; 
 }
 
 [System.Serializable]
 public class DialogueNode
 {
-    public int ID; // Matches "ID"
-    public string Name; // Matches "Name"
-    public string Text; // Matches "Text"
-    public List<DialogueChoice> Choises; // Matches "Answers" in JSON
+    public int ID; 
+    public string Name; 
+    public string Text; 
+    public List<DialogueChoice> Choises; 
 }
 
 [System.Serializable]
 public class DialogueChoice
 {
-    public string Text; // Matches "Text"
-    public int Next; // Matches "Next"
+    public string Text; 
+    public int Next; 
 }

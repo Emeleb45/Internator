@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        // Reference the ExampleClass script
+
         movementScript = GetComponent<CharacterMovementPOV>();
 
         if (movementScript == null)
@@ -37,9 +37,9 @@ public class PlayerInput : MonoBehaviour
         inputDirection = new Vector3(horizontal, 0, vertical);
 
 
-        // Detect toggle run key
+
         isRunning = Input.GetKey(runKey);
-        // Detect jump input
+
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressed = true;

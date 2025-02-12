@@ -8,19 +8,31 @@ public class DialogueManager : MonoBehaviour
     public TextAsset dialogueJson;
 
     [Header("UI Elements")]
-    public GameObject dialoguePanel; // The dialogue UI panel
+    public GameObject dialoguePanel; 
     public TextMeshProUGUI npcNameText;
     public TextMeshProUGUI dialogueText;
     public Transform choicesContainer;
     public GameObject choiceButtonPrefab;
+    public CharacterMovementPOV playerMovement;
 
     private List<DialogueNode> dialogueNodes;
     private DialogueNode currentNode;
 
-    void Start()
+    void OnEnable()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        playerMovement.MovementLocked = true;
+        playerMovement.CameraLocked = true;
         LoadDialogue();
         StartDialogue();
+    }
+    void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        playerMovement.MovementLocked = false;
+        playerMovement.CameraLocked = false;
     }
 
     void LoadDialogue()
@@ -47,23 +59,23 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueNodes.Count > 0)
         {
-            ShowNode(dialogueNodes[0]); // Start at the first node
+            ShowNode(dialogueNodes[0]); 
         }
     }
 
     void ShowNode(DialogueNode node)
     {
         currentNode = node;
-        dialogueText.text = node.Text; // Update dialogue text
-        npcNameText.text = node.Name;  // Update NPC name
+        dialogueText.text = node.Text; 
+        npcNameText.text = node.Name;  
 
-        // ❌ Clear previous buttons (to avoid duplicate choices)
+
         foreach (Transform child in choicesContainer.transform)
         {
             Destroy(child.gameObject);
         }
 
-        // ✅ Check if the node has Choises
+
         if (node.Choises == null || node.Choises.Count == 0)
         {
             Debug.Log("No choices available. Dialogue might be ending.");
@@ -71,7 +83,7 @@ public class DialogueManager : MonoBehaviour
         }
 
 
-        // ✅ Generate choice buttons for the new dialogue node
+
         foreach (var choice in node.Choises)
         {
 
@@ -79,7 +91,7 @@ public class DialogueManager : MonoBehaviour
             GameObject newButton = Instantiate(choiceButtonPrefab, choicesContainer.transform);
             newButton.GetComponentInChildren<TextMeshProUGUI>().text = choice.Text;
 
-            // ✅ Ensure button calls ChooseOption() with the correct index
+
             int choiceIndex = node.Choises.IndexOf(choice);
             newButton.GetComponent<Button>().onClick.AddListener(() => ChooseOption(choiceIndex));
         }
@@ -100,15 +112,15 @@ public class DialogueManager : MonoBehaviour
 
         int nextId = currentNode.Choises[choiceIndex].Next;
 
-        // If there is no valid next ID, end the dialogue
-        if (nextId == 0)  // You can also check if it's -1 or any "end" indicator
+
+        if (nextId == 0)  
         {
 
-            dialoguePanel.SetActive(false); // Hide dialogue UI
+            dialoguePanel.SetActive(false); 
             return;
         }
 
-        // Find the next node by its ID
+
         DialogueNode nextNode = dialogueNodes.Find(node => node.ID == nextId);
 
         if (nextNode != null)
@@ -117,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            dialoguePanel.SetActive(false); // Hide dialogue UI
+            dialoguePanel.SetActive(false); 
         }
     }
 

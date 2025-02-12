@@ -10,17 +10,17 @@ public class CharacterMovementThirdPerson : MonoBehaviour
     public bool isRunning = false;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public CinemachineCamera virtualCamera; // Cinemachine camera for zoom functionality
+    public CinemachineCamera virtualCamera; 
 
 
 
-    public Transform groundCheck; // Transform for ground check
-    public float groundCheckRadius = 0.001f; // Radius for ground check sphere
+    public Transform groundCheck; 
+    public float groundCheckRadius = 0.001f; 
     public float animationGroundCheckRadius = 0.25f;
-    public LayerMask groundLayer; // Layer to consider as ground
+    public LayerMask groundLayer; 
 
 
-    private float ySpeed = 0f;  // For jump and gravity
+    private float ySpeed = 0f;  
     private Vector3 moveDirection = Vector3.zero;
     public Animator animator;
 
@@ -42,7 +42,7 @@ public class CharacterMovementThirdPerson : MonoBehaviour
         {
             return;
         }
-        // Gravity handling and jumping
+
         if (IsGrounded())
         {
             ySpeed = -gravity * Time.deltaTime;
@@ -54,22 +54,22 @@ public class CharacterMovementThirdPerson : MonoBehaviour
         moveDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
         if (jumpPressed && IsGroundedForAnimation())
         {
-            ySpeed = jumpSpeed; // Set jump speed when the jump button is pressed
+            ySpeed = jumpSpeed; 
         }
 
         Vector3 forward = virtualCamera.transform.forward;
         Vector3 right = virtualCamera.transform.right;
 
-        forward.y = 0; // Remove any tilt from the camera
+        forward.y = 0; 
         right.y = 0;
 
         forward.Normalize();
         right.Normalize();
 
-        // Combine input movement
+
         moveDirection = forward * inputDirection.z + right * inputDirection.x;
 
-        // Normalize the movement vector to prevent faster diagonal movement
+
         if (moveDirection.magnitude > 1)
         {
             moveDirection.Normalize();
@@ -77,34 +77,34 @@ public class CharacterMovementThirdPerson : MonoBehaviour
 
         if (moveDirection.magnitude > 0.1f)
         {
-            // Rotate the character towards the move direction
+
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
 
-        // Apply movement
+
         characterController.Move(moveDirection * speed * Time.deltaTime);
 
-        // Send speed to the animation controller
+
         if (animator != null)
         {
             animator.SetFloat("Speed", moveDirection.magnitude * speed);
             animator.SetBool("IsGrounded", IsGroundedForAnimation());
         }
 
-        // Apply vertical movement (gravity/jump)
+
         characterController.Move(Vector3.up * ySpeed * Time.deltaTime);
     }
 
     private bool IsGrounded()
     {
-        // Perform a sphere check at the groundCheck position
+
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     private bool IsGroundedForAnimation()
     {
-        // Perform a sphere check at the groundCheck position with a larger radius for animation
+
         return Physics.CheckSphere(groundCheck.position, animationGroundCheckRadius, groundLayer);
     }
 
