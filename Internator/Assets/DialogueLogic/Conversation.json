@@ -1,11 +1,19 @@
 {
+    "_Comment": "Function Animation Names -> 'SitStand'|'SitClap'|'SitTalk'|'SitDiss'|'SitDuim'|'UpdatePoints'",
+    
     "Lines": [
         {
             "ID": 1,
             "Name": "Hiring Manager",
             "Text": "Hello, how are you?",
             "Choises": [
-                { "Text": "Hello.", "Next": 2},
+                { 
+                    "Text": "Hello.", 
+                    "Next": 2, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitClap"] }
+                    ]
+                },
                 { "Text": "Sup", "Next": 3}
             ]
 
@@ -15,7 +23,13 @@
             "Name": "Hiring Manager",
             "Text": "Good, are you interested in the job?",
             "Choises": [
-                { "Text": "Yea.", "Next": 0},
+                {
+                    "Text": "Yea.",
+                    "Next": 0,
+                    "Functions": [
+                        { "Name": "UpdatePoints", "Params": ["100"] }
+                    ]
+                },
                 { "Text": "Nah", "Next": 3}
             ]
 
@@ -25,7 +39,10 @@
             "Name": "Hiring Manager",
             "Text": "You are stupid and unprofessional, I am not interested in hiring you.",
             "Choises": [
-                { "Text": "Bye", "Next": 0 }
+                { "Text": "Bye", "Next": 0,                     
+                    "Functions": [
+                    { "Name": "UpdatePoints", "Params": ["-100"] }
+                ] }
             ]
 
         }

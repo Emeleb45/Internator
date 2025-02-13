@@ -8,12 +8,13 @@ public class PlayerInput : MonoBehaviour
     private Vector3 inputDirection = Vector3.zero;
     private bool isRunning = false;
     private bool jumpPressed = false;
+    private bool TipsPressed = false;
     private bool toggleRunPressed = false;
 
 
     // ###### CONTROLS LIST
     public KeyCode runKey = KeyCode.LeftControl;
-
+    public KeyCode TipsKey = KeyCode.Q;
 
 
     // ###### END CONTROLS LIST
@@ -44,6 +45,10 @@ public class PlayerInput : MonoBehaviour
         {
             jumpPressed = true;
         }
+        if (Input.GetKeyDown(TipsKey))
+        {
+            TipsPressed = true;
+        }
         // ###### Pass movement input to the movement script
         if (movementScript != null)
         {
@@ -55,6 +60,11 @@ public class PlayerInput : MonoBehaviour
             if (jumpPressed)
             {
                 jumpPressed = false;
+            }
+            if (TipsPressed)
+            {
+                movementScript.ToggleTips();
+                TipsPressed = false;
             }
         }
 

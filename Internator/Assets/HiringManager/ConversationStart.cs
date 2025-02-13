@@ -5,10 +5,15 @@ public class ConversationStart : MonoBehaviour
     public BoxCollider trigger;
     public GameObject dialoguePanel;
     public GameObject promptPanel;
-
+    public GameObject EndPanel;
     void Update()
     {
         if (dialoguePanel.activeSelf)
+        {
+            promptPanel.SetActive(false);
+            return;
+        }
+        if (EndPanel.activeSelf)
         {
             promptPanel.SetActive(false);
             return;
