@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Gold
-  m_Shader: {fileID: -6465566751694194690, guid: 221ce880b59487541b2027658156aba7, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 221ce880b59487541b2027658156aba7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 47945741f23b8444d8c1677eb74c5d55, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 47945741f23b8444d8c1677eb74c5d55, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []

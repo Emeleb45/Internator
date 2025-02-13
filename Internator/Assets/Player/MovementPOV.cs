@@ -13,17 +13,17 @@ public class CharacterMovementPOV : MonoBehaviour
     public bool MovementLocked = false;
     public bool CameraLocked = false;
 
-    public Transform cameraTransform; 
+    public Transform cameraTransform;
     public float mouseSensitivity = 2.0f;
     private float verticalRotation = 0f;
 
-    public Transform groundCheck; 
-    public float groundCheckRadius = 0.001f; 
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.001f;
     public float animationGroundCheckRadius = 0.25f;
-    public LayerMask groundLayer; 
+    public LayerMask groundLayer;
 
 
-    private float ySpeed = 0f;  
+    private float ySpeed = 0f;
     private Vector3 moveDirection = Vector3.zero;
     public Animator animator;
 
@@ -45,15 +45,15 @@ public class CharacterMovementPOV : MonoBehaviour
 
     public void MovePlayer(Vector3 inputDirection, bool jumpPressed)
     {
-        if (MovementLocked)
-        {
-            return;
-        }
+
         if (characterController.enabled == false)
         {
             return;
         }
-
+        if (MovementLocked)
+        {
+            return;
+        }
         if (IsGrounded())
         {
             ySpeed = -gravity * Time.deltaTime;
@@ -65,19 +65,19 @@ public class CharacterMovementPOV : MonoBehaviour
         moveDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
         if (jumpPressed && IsGroundedForAnimation())
         {
-            ySpeed = jumpSpeed; 
+            ySpeed = jumpSpeed;
         }
 
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
-        forward.y = 0; 
+        forward.y = 0;
         right.y = 0;
 
         forward.Normalize();
         right.Normalize();
 
- 
+
         moveDirection = forward * inputDirection.z + right * inputDirection.x;
 
 
@@ -96,7 +96,7 @@ public class CharacterMovementPOV : MonoBehaviour
             animator.SetBool("IsGrounded", IsGroundedForAnimation());
         }
 
-   
+
         characterController.Move(Vector3.up * ySpeed * Time.deltaTime);
     }
 
@@ -130,7 +130,7 @@ public class CharacterMovementPOV : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
 
-   
+
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 45f);
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);

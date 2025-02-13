@@ -20,10 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall
-  m_Shader: {fileID: -6465566751694194690, guid: 47945741f23b8444d8c1677eb74c5d55, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 47945741f23b8444d8c1677eb74c5d55, type: 3}
-  m_ModifiedSerializedProperties: 8
+  m_Name: Object
+  m_Shader: {fileID: -6465566751694194690, guid: 221ce880b59487541b2027658156aba7, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 221ce880b59487541b2027658156aba7, type: 3}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -33,7 +33,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: _Min
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -48,6 +48,6 @@ Material:
     - _QueueControl: 0
     - _Shades: 0.49
     m_Colors:
-    - _Color: {r: 0.99293923, g: 1, b: 0.5896226, a: 1}
+    - _Color: {r: 0.8396226, g: 0.2891153, b: 0.7765906, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
