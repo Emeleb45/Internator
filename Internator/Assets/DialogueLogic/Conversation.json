@@ -5,46 +5,136 @@
         {
             "ID": 1,
             "Name": "Hiring Manager",
-            "Text": "Hello, how are you?",
+            "Text": "Welcome! Thanks for coming in today. How are you feeling?",
             "Choises": [
                 { 
-                    "Text": "Hello.", 
+                    "Text": "I'm feeling great, excited for this!", 
                     "Next": 2, 
                     "Functions": [ 
-                        { "Name": "PlayAnimation", "Params": ["SitClap"] }
+                        { "Name": "PlayAnimation", "Params": ["SitClap"] },
+                        { "Name": "UpdatePoints", "Params": ["10"] }
                     ]
                 },
-                { "Text": "Sup", "Next": 3}
+                { 
+                    "Text": "A little nervous, to be honest.", 
+                    "Next": 2, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitTalk"] }
+                    ]
+                },
+                { 
+                    "Text": "Let's just get this over with.", 
+                    "Next": 3, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitDiss"] },
+                        { "Name": "UpdatePoints", "Params": ["-20"] }
+                    ]
+                }
             ]
-
         },
         {
             "ID": 2,
             "Name": "Hiring Manager",
-            "Text": "Good, are you interested in the job?",
+            "Text": "Great! Can you tell me a bit about yourself and why you're interested in this position?",
             "Choises": [
-                {
-                    "Text": "Yea.",
-                    "Next": 0,
-                    "Functions": [
-                        { "Name": "UpdatePoints", "Params": ["100"] }
+                { 
+                    "Text": "Absolutely! I’ve been passionate about this field and eager to learn.", 
+                    "Next": 4, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitTalk"] },
+                        { "Name": "UpdatePoints", "Params": ["20"] }
                     ]
                 },
-                { "Text": "Nah", "Next": 3}
+                { 
+                    "Text": "I need a job, and this seemed decent.", 
+                    "Next": 3, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitDiss"] },
+                        { "Name": "UpdatePoints", "Params": ["-30"] }
+                    ]
+                }
             ]
-
         },
         {
             "ID": 3,
             "Name": "Hiring Manager",
-            "Text": "You are stupid and unprofessional, I am not interested in hiring you.",
+            "Text": "I don’t think you’re taking this seriously. I won’t be moving forward with your application.",
             "Choises": [
-                { "Text": "Bye", "Next": 0,                     
-                    "Functions": [
-                    { "Name": "UpdatePoints", "Params": ["-100"] }
-                ] }
+                { 
+                    "Text": "Fine, whatever.", 
+                    "Next": 0, 
+                    "Functions": [ 
+                        { "Name": "UpdatePoints", "Params": ["-100"] }
+                    ]
+                },
+                { 
+                    "Text": "I understand. Thanks for your time.", 
+                    "Next": 0, 
+                    "Functions": [ 
+                        { "Name": "UpdatePoints", "Params": ["-25"] }
+                    ]
+                }
             ]
-
+        },
+        {
+            "ID": 4,
+            "Name": "Hiring Manager",
+            "Text": "That sounds great! What would you say is your biggest strength?",
+            "Choises": [
+                { 
+                    "Text": "I'm a fast learner and a great team player.", 
+                    "Next": 5, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitClap"] },
+                        { "Name": "UpdatePoints", "Params": ["20"] }
+                    ]
+                },
+                { 
+                    "Text": "I work better alone and don’t like being told what to do.", 
+                    "Next": 3, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitDiss"] },
+                        { "Name": "UpdatePoints", "Params": ["-30"] }
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": 5,
+            "Name": "Hiring Manager",
+            "Text": "That’s exactly what we’re looking for! One last question: Where do you see yourself in five years?",
+            "Choises": [
+                { 
+                    "Text": "Hopefully growing with this company in a leadership role.", 
+                    "Next": 6, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitDuim"] },
+                        { "Name": "UpdatePoints", "Params": ["30"] }
+                    ]
+                },
+                { 
+                    "Text": "I don’t really plan that far ahead.", 
+                    "Next": 3, 
+                    "Functions": [ 
+                        { "Name": "PlayAnimation", "Params": ["SitTalk"] },
+                        { "Name": "UpdatePoints", "Params": ["-10"] }
+                    ]
+                }
+            ]
+        },
+        {
+            "ID": 6,
+            "Name": "Hiring Manager",
+            "Text": "I really like your mindset. I think you’d be a great fit for our team!",
+            "Choises": [
+                { 
+                    "Text": "Thank you! I'm excited to join!", 
+                    "Next": 0, 
+                    "Functions": [ 
+                        { "Name": "UpdatePoints", "Params": ["100"] }
+                    ]
+                }
+            ]
         }
     ]
 }

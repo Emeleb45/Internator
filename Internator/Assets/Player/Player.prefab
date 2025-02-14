@@ -121,6 +121,7 @@ MonoBehaviour:
   Tips: {fileID: 4016083296684838718}
   TipsOn: 0
   smooth: 2
+  Speaking: 0
 --- !u!143 &3313648832082582824
 CharacterController:
   m_ObjectHideFlags: 0
@@ -352,11 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3421184540625569918, guid: 67f2df57e29614342a0b19cb55434348, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 3421184540625569918, guid: 67f2df57e29614342a0b19cb55434348, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3421184540625569918, guid: 67f2df57e29614342a0b19cb55434348, type: 3}
       propertyPath: m_LocalRotation.w

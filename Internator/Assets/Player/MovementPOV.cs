@@ -33,6 +33,7 @@ public class CharacterMovementPOV : MonoBehaviour
     public GameObject LoseScreen;
     public GameObject WinScreen;
     public GameObject EndButton;
+    public GameObject DialogueBox;
     public GameObject Tips;
     public bool TipsOn = false;
     private Quaternion targetRotation = Quaternion.Euler(25, 0, 0);
@@ -67,6 +68,11 @@ public class CharacterMovementPOV : MonoBehaviour
         }
         if (MovementLocked && !TipsOn)
         {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+                animator.SetBool("IsGrounded", IsGroundedForAnimation());
+            }
             return;
         }
 
@@ -80,6 +86,11 @@ public class CharacterMovementPOV : MonoBehaviour
         }
         if (MovementLocked)
         {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+                animator.SetBool("IsGrounded", IsGroundedForAnimation());
+            }
             characterController.Move(Vector3.up * ySpeed * Time.deltaTime);
             return;
         }
@@ -162,6 +173,7 @@ public class CharacterMovementPOV : MonoBehaviour
         if (Points >= 100)
         {
             // WIN
+            DialogueBox.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             MovementLocked = true;
@@ -172,6 +184,7 @@ public class CharacterMovementPOV : MonoBehaviour
         else if (Points <= -100)
         {
             // LOSE
+            DialogueBox.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             MovementLocked = true;
